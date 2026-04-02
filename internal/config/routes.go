@@ -1,0 +1,18 @@
+package config
+
+import (
+	"net/http"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
+)
+
+func loadRoutes() *chi.Mux {
+	router := chi.NewRouter()
+	router.Use(middleware.Logger)
+	router.Get("/api/v1", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+	})
+
+	return router
+}
