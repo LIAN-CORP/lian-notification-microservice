@@ -1,4 +1,4 @@
-package config
+package logger
 
 import (
 	"log"
@@ -7,8 +7,7 @@ import (
 )
 
 type Logger struct {
-	Log *zap.Logger
-	Sugar *zap.SugaredLogger
+	*zap.SugaredLogger
 }
 
 func NewLogger() *Logger {
@@ -18,7 +17,6 @@ func NewLogger() *Logger {
 	}
 
 	return &Logger{
-		Log: zapLogger,
-		Sugar: zapLogger.Sugar(),
+		SugaredLogger: zapLogger.Sugar(),
 	}
 }
